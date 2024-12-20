@@ -1,2 +1,2 @@
-# E-commerce_Website
+# Simple E-commerce website with basic features using JS
  
