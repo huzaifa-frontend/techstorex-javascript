@@ -1,474 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechStore - Premium Electronics</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    .header {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    .logo {
-      font-size: 32px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .cart-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .cart-button {
-      background: rgba(255, 255, 255, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      position: relative;
-    }
-
-    .cart-button:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background: #ff6b6b;
-      color: white;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      color: white;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      animation: fadeInUp 1s ease-out;
-    }
-
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 30px;
-      opacity: 0.9;
-      animation: fadeInUp 1s ease-out 0.2s both;
-    }
-
-    /* Filter Section */
-    .filter-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 40px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .filter-button {
-      background: rgba(255, 255, 255, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .filter-button:hover,
-    .filter-button.active {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-    }
-
-    /* Products Container */
-    .products-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 60px;
-    }
-
-    #product-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 20px;
-    }
-
-    .product-card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      transition: all 0.4s ease;
-      cursor: pointer;
-      animation: fadeInUp 0.6s ease-out;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .product-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .product-card:hover .product-image {
-      transform: scale(1.1);
-    }
-
-    .product-info {
-      padding: 25px;
-    }
-
-    .product-name {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #333;
-    }
-
-    .product-price {
-      font-size: 24px;
-      font-weight: 800;
-      color: #667eea;
-      margin-bottom: 10px;
-    }
-
-    .product-description {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .product-rating {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-bottom: 20px;
-    }
-
-    .stars {
-      color: #ffd700;
-      font-size: 18px;
-    }
-
-    .rating-text {
-      color: #666;
-      font-size: 14px;
-    }
-
-    .product-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .add-to-cart {
-      flex: 1;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 12px 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .add-to-cart:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-    }
-
-    .add-to-cart:active {
-      transform: translateY(0);
-    }
-
-    .add-to-cart.added {
-      background: #4CAF50;
-      animation: pulse 0.3s ease;
-    }
-
-    .delete-button {
-      background: #ff6b6b;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 12px 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-    }
-
-    .delete-button:hover {
-      background: #ff5252;
-      transform: translateY(-2px);
-    }
-
-    .sale-badge {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #ff6b6b;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 15px;
-      font-size: 12px;
-      font-weight: bold;
-      animation: pulse 2s infinite;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-    }
-
-    /* Cart Toast */
-    .cart-toast {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #4CAF50;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      transform: translateX(400px);
-      transition: transform 0.3s ease;
-      z-index: 1000;
-    }
-
-    .cart-toast.show {
-      transform: translateX(0);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 36px;
-      }
-      
-      .hero p {
-        font-size: 18px;
-      }
-      
-      #product-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .nav-container {
-        flex-direction: column;
-        gap: 15px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <div class="header">
-    <div class="nav-container">
-      <div class="logo">TechStore</div>
-      <div class="cart-container">
-        <button class="cart-button">
-          🛒 Cart
-          <span class="cart-count" id="cart-count">0</span>
-        </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechStore - Premium Electronics</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="nav-container">
+        <div class="logo">TechStore</div>
+        <div class="cart-container">
+          <button class="cart-button">
+            🛒 Cart
+            <span class="cart-count" id="cart-count">0</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <h1>Premium Electronics Store</h1>
-    <p>Discover the latest technology at unbeatable prices</p>
-  </div>
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Premium Electronics Store</h1>
+      <p>Discover the latest technology at unbeatable prices</p>
+    </div>
 
-  <!-- Filter Section -->
-  <div class="filter-section">
-    <button class="filter-button active" data-category="all">All Products</button>
-    <button class="filter-button" data-category="electronics">Electronics</button>
-    <button class="filter-button" data-category="accessories">Accessories</button>
-    <button class="filter-button" data-category="sale">On Sale</button>
-  </div>
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <button class="filter-button active" data-category="all">
+        All Products
+      </button>
+      <button class="filter-button" data-category="electronics">
+        Electronics
+      </button>
+      <button class="filter-button" data-category="accessories">
+        Accessories
+      </button>
+      <button class="filter-button" data-category="sale">On Sale</button>
+    </div>
 
-  <!-- Products Container -->
-  <div class="products-container">
-    <div id="product-container"></div>
-  </div>
+    <!-- Products Container -->
+    <div class="products-container">
+      <div id="product-container"></div>
+    </div>
 
-  <!-- Cart Toast -->
-  <div class="cart-toast" id="cart-toast">
-    Item added to cart!
-  </div>
+    <!-- Cart Toast -->
+    <div class="cart-toast" id="cart-toast">Item added to cart!</div>
 
-  <script>
-    let products = [
-      { 
-        id: 1, 
-        name: "Wireless Headphones", 
-        price: 99.99, 
-        description: "Premium noise-cancelling wireless headphones with 30-hour battery life.", 
-        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop&q=80",
-        category: "electronics",
-        rating: 4.8,
-        onSale: false
-      },
-      { 
-        id: 2, 
-        name: "Smart Watch", 
-        price: 199.99, 
-        description: "Advanced fitness tracking with heart rate monitoring and GPS.", 
-        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop&q=80",
-        category: "electronics",
-        rating: 4.6,
-        onSale: true
-      },
-      { 
-        id: 3, 
-        name: "Bluetooth Speaker", 
-        price: 79.99, 
-        description: "Portable speaker with 360° sound and waterproof design.", 
-        image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=300&fit=crop&q=80",
-        category: "electronics",
-        rating: 4.7,
-        onSale: false
-      },
-      { 
-        id: 4, 
-        name: "Phone Case", 
-        price: 24.99, 
-        description: "Durable protective case with wireless charging support.", 
-        image: "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=300&fit=crop&q=80",
-        category: "accessories",
-        rating: 4.3,
-        onSale: true
-      },
-      { 
-        id: 5, 
-        name: "Laptop Stand", 
-        price: 49.99, 
-        description: "Ergonomic adjustable laptop stand for better posture.", 
-        image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop&q=80",
-        category: "accessories",
-        rating: 4.5,
-        onSale: false
-      },
-      { 
-        id: 6, 
-        name: "Gaming Mouse", 
-        price: 69.99, 
-        description: "High-precision gaming mouse with customizable RGB lighting.", 
-        image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop&q=80",
-        category: "electronics",
-        rating: 4.9,
-        onSale: true
-      }
-    ];
+    <script>
+      let products = [
+        {
+          id: 1,
+          name: "Wireless Headphones",
+          price: 99.99,
+          description:
+            "Premium noise-cancelling wireless headphones with 30-hour battery life.",
+          image:
+            "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop&q=80",
+          category: "electronics",
+          rating: 4.8,
+          onSale: false,
+        },
+        {
+          id: 2,
+          name: "Smart Watch",
+          price: 199.99,
+          description:
+            "Advanced fitness tracking with heart rate monitoring and GPS.",
+          image:
+            "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop&q=80",
+          category: "electronics",
+          rating: 4.6,
+          onSale: true,
+        },
+        {
+          id: 3,
+          name: "Bluetooth Speaker",
+          price: 79.99,
+          description:
+            "Portable speaker with 360° sound and waterproof design.",
+          image:
+            "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=300&fit=crop&q=80",
+          category: "electronics",
+          rating: 4.7,
+          onSale: false,
+        },
+        {
+          id: 4,
+          name: "Phone Case",
+          price: 24.99,
+          description:
+            "Durable protective case with wireless charging support.",
+          image:
+            "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=300&fit=crop&q=80",
+          category: "accessories",
+          rating: 4.3,
+          onSale: true,
+        },
+        {
+          id: 5,
+          name: "Laptop Stand",
+          price: 49.99,
+          description: "Ergonomic adjustable laptop stand for better posture.",
+          image:
+            "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop&q=80",
+          category: "accessories",
+          rating: 4.5,
+          onSale: false,
+        },
+        {
+          id: 6,
+          name: "Gaming Mouse",
+          price: 69.99,
+          description:
+            "High-precision gaming mouse with customizable RGB lighting.",
+          image:
+            "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop&q=80",
+          category: "electronics",
+          rating: 4.9,
+          onSale: true,
+        },
+      ];
 
-    let cart = [];
-    let currentFilter = 'all';
+      let cart = [];
+      let currentFilter = "all";
 
-    function renderProducts() {
-      const container = document.getElementById("product-container");
-      container.innerHTML = "";
+      function renderProducts() {
+        const container = document.getElementById("product-container");
+        container.innerHTML = "";
 
-      let filteredProducts = products;
-      
-      if (currentFilter !== 'all') {
-        if (currentFilter === 'sale') {
-          filteredProducts = products.filter(product => product.onSale);
-        } else {
-          filteredProducts = products.filter(product => product.category === currentFilter);
+        let filteredProducts = products;
+
+        if (currentFilter !== "all") {
+          if (currentFilter === "sale") {
+            filteredProducts = products.filter((product) => product.onSale);
+          } else {
+            filteredProducts = products.filter(
+              (product) => product.category === currentFilter
+            );
+          }
         }
-      }
 
-      filteredProducts.forEach((product, index) => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.style.animationDelay = `${index * 0.1}s`;
+        filteredProducts.forEach((product, index) => {
+          const card = document.createElement("div");
+          card.className = "product-card";
+          card.style.animationDelay = `${index * 0.1}s`;
 
-        const stars = '★'.repeat(Math.floor(product.rating)) + '☆'.repeat(5 - Math.floor(product.rating));
-        
-        card.innerHTML = `
-          ${product.onSale ? '<div class="sale-badge">SALE</div>' : ''}
-          <img src="${product.image}" alt="${product.name}" class="product-image">
+          const stars =
+            "★".repeat(Math.floor(product.rating)) +
+            "☆".repeat(5 - Math.floor(product.rating));
+
+          card.innerHTML = `
+          ${product.onSale ? '<div class="sale-badge">SALE</div>' : ""}
+          <img src="${product.image}" alt="${
+            product.name
+          }" class="product-image">
           <div class="product-info">
             <h3 class="product-name">${product.name}</h3>
             <div class="product-price">$${product.price.toFixed(2)}</div>
@@ -481,73 +168,75 @@
               <button class="add-to-cart" onclick="addToCart(${product.id})">
                 Add to Cart
               </button>
-              <button class="delete-button" onclick="deleteProduct(${product.id})">
+              <button class="delete-button" onclick="deleteProduct(${
+                product.id
+              })">
                 🗑️
               </button>
             </div>
           </div>
         `;
 
-        container.appendChild(card);
-      });
-    }
-
-    function addToCart(productId) {
-      const product = products.find(p => p.id === productId);
-      if (product) {
-        cart.push(product);
-        updateCartCount();
-        showCartToast();
-        
-        // Add visual feedback
-        const button = event.target;
-        button.classList.add('added');
-        button.textContent = 'Added!';
-        setTimeout(() => {
-          button.classList.remove('added');
-          button.textContent = 'Add to Cart';
-        }, 1000);
+          container.appendChild(card);
+        });
       }
-    }
 
-    function deleteProduct(productId) {
-      products = products.filter(product => product.id !== productId);
-      renderProducts();
-    }
+      function addToCart(productId) {
+        const product = products.find((p) => p.id === productId);
+        if (product) {
+          cart.push(product);
+          updateCartCount();
+          showCartToast();
 
-    function updateCartCount() {
-      document.getElementById('cart-count').textContent = cart.length;
-    }
+          // Add visual feedback
+          const button = event.target;
+          button.classList.add("added");
+          button.textContent = "Added!";
+          setTimeout(() => {
+            button.classList.remove("added");
+            button.textContent = "Add to Cart";
+          }, 1000);
+        }
+      }
 
-    function showCartToast() {
-      const toast = document.getElementById('cart-toast');
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2000);
-    }
-
-    // Filter functionality
-    document.querySelectorAll('.filter-button').forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        document.querySelectorAll('.filter-button').forEach(btn => 
-          btn.classList.remove('active')
-        );
-        
-        // Add active class to clicked button
-        button.classList.add('active');
-        
-        // Update current filter
-        currentFilter = button.dataset.category;
-        
-        // Re-render products
+      function deleteProduct(productId) {
+        products = products.filter((product) => product.id !== productId);
         renderProducts();
-      });
-    });
+      }
 
-    // Initialize
-    renderProducts();
-  </script>
-</body>
+      function updateCartCount() {
+        document.getElementById("cart-count").textContent = cart.length;
+      }
+
+      function showCartToast() {
+        const toast = document.getElementById("cart-toast");
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
+      }
+
+      // Filter functionality
+      document.querySelectorAll(".filter-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          document
+            .querySelectorAll(".filter-button")
+            .forEach((btn) => btn.classList.remove("active"));
+
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          // Update current filter
+          currentFilter = button.dataset.category;
+
+          // Re-render products
+          renderProducts();
+        });
+      });
+
+      // Initialize
+      renderProducts();
+    </script>
+  </body>
 </html>
