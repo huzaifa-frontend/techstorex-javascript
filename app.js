@@ -44,7 +44,7 @@
           name: "Laptop Stand",
           price: 49.99,
           description: "Ergonomic adjustable laptop stand for better posture.",
-          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop&q=80",
+          image: "https://images.unsplash.com/photo-1641247530943-6af2b42e5f06?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           category: "accessories",
           rating: 4.5,
           onSale: false,
