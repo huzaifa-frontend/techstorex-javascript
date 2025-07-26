@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Header -->
+     <!-- Header -->
     <div class="header">
       <div class="nav-container">
         <div class="logo">TechStoreX</div>
         <div class="cart-container">
-          <button class="cart-button">
+          <button class="cart-button" id="cart-button">
             🛒 Cart
             <span class="cart-count" id="cart-count">0</span>
           </button>
@@ -45,8 +45,78 @@
       <div id="product-container"></div>
     </div>
 
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+      <div class="cart-content">
+        <div class="cart-header">
+          <div class="cart-title">Shopping Cart</div>
+          <button class="close-cart" id="close-cart">×</button>
+        </div>
+        <div class="cart-body" id="cart-body">
+          <!-- Cart items will be inserted here -->
+        </div>
+        <div class="cart-total" id="cart-total">
+          <span class="total-label">Total:</span>
+          <span class="total-amount">$0.00</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Cart Toast -->
     <div class="cart-toast" id="cart-toast">Item added to cart!</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>TechStoreX</h3>
+          <p>Your premier destination for cutting-edge electronics and accessories. We bring you the latest technology at competitive prices with exceptional customer service.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">📘</a>
+            <a href="#" class="social-link">🐦</a>
+            <a href="#" class="social-link">📷</a>
+            <a href="#" class="social-link">💼</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Customer Service</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>📧 info@techstorex.com</p>
+          <p>📞 +1 (555) 123-4567</p>
+          <p>📍 123 Tech Street, Digital City, DC 12345</p>
+          <p>🕒 Mon-Fri: 9AM-8PM<br>Sat-Sun: 10AM-6PM</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 TechStoreX. All rights reserved. | Privacy Policy | Terms of Service</p>
+      </div>
+    </footer>
+
 
     <!-- script -->
     <script src="app.js"></script>
