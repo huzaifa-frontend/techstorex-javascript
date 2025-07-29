@@ -113,7 +113,17 @@ function renderProducts() {
 function addToCart(productId) {
   const product = products.find((p) => p.id === productId);
   if (product) {
-    cart.push({ ...product, cartId: Date.now() + Math.random() });
+    // Check if item already exists in cart
+    const existingItem = cart.find((item) => item.id === productId);
+
+    if (existingItem) {
+      // If item exists, increase quantity
+      existingItem.quantity += 1;
+    } else {
+      // If item doesn't exist, add new item with quantity 1
+      cart.push({ ...product, quantity: 1 });
+    }
+
     updateCartCount();
     showCartToast();
 
@@ -128,14 +138,31 @@ function addToCart(productId) {
   }
 }
 
-function removeFromCart(cartId) {
-  cart = cart.filter((item) => item.cartId !== cartId);
+function updateQuantity(productId, change) {
+  const item = cart.find((item) => item.id === productId);
+  if (item) {
+    item.quantity += change;
+
+    // Remove item if quantity becomes 0 or less
+    if (item.quantity <= 0) {
+      removeFromCart(productId);
+    } else {
+      updateCartCount();
+      renderCart();
+    }
+  }
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter((item) => item.id !== productId);
   updateCartCount();
   renderCart();
 }
 
 function updateCartCount() {
-  document.getElementById("cart-count").textContent = cart.length;
+  // Count total items (considering quantities)
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("cart-count").textContent = totalItems;
 }
 
 function showCartToast() {
@@ -168,9 +195,15 @@ function renderCart() {
             <img src="${item.image}" alt="${item.name}" class="cart-item-image">
             <div class="cart-item-info">
               <div class="cart-item-name">${item.name}</div>
-              <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+              <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
+              <div class="cart-item-subtotal">Subtotal: $${(item.price * item.quantity).toFixed(2)}</div>
             </div>
-            <button class="remove-item" onclick="removeFromCart(${item.cartId})">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+              <span class="quantity-display">${item.quantity}</span>
+              <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+            </div>
+            <button class="remove-item" onclick="removeFromCart(${item.id})" title="Remove from cart">
               🗑️
             </button>
           </div>
@@ -178,7 +211,8 @@ function renderCart() {
     )
     .join("");
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  // Calculate total considering quantities
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   cartTotal.querySelector(".total-amount").textContent = `$${total.toFixed(2)}`;
 }
 
