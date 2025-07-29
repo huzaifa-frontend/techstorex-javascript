@@ -539,7 +539,14 @@ body {
 }
 
 .social-link.instagram:hover {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
 }
 
 .social-link.linkedin:hover {
@@ -547,7 +554,7 @@ body {
 }
 
 .social-link::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 24px;
   height: 24px;
@@ -599,7 +606,7 @@ body {
 }
 
 .contact-icon::before {
-  content: '';
+  content: "";
   width: 12px;
   height: 12px;
   background-size: contain;
