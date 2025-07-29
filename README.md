@@ -4,41 +4,50 @@
 
 ## 📋 Overview
 
-**TechStoreX** is a sleek and modern **JavaScript-based product listing** interface that mimics a mini online store experience. It showcases a range of tech products with filtering, cart interaction, and animations—ideal for frontend practice.
+**TechStoreX** is a modern and responsive **JavaScript-based product showcase** that simulates a mini online electronics store. It allows users to explore, filter, and add products to a cart with real-time interactions and animations. Aimed at enhancing frontend development skills.
 
 - 🖥️ Lists featured tech products with dynamic rendering
-- 🛒 Add-to-cart system with animated toast notifications
-- 🧹 Filter by categories like electronics, accessories, and sales
-- 💥 Delete button to remove products from the list
-- 🌈 Beautiful responsive layout with modern design
+- 🛒 Add-to-cart system with quantity controls and toast notifications
+- 🧹 Filter by category: Electronics, Accessories, and On Sale
+- ⭐ Interactive star ratings for each product
+- ❌ Remove individual cart items or clear entire cart
+- 📦 Responsive UI with smooth transitions and modals
 
 ## 💻 Technologies Used
 
-- **HTML5** – Structured semantic layout
-- **CSS3** – Gradient backgrounds, animations, and responsive design
-- **Vanilla JavaScript** – DOM manipulation, event handling, filtering, and cart logic
+- **HTML5** – Semantic structure
+- **CSS3** – Responsive grid layout, animations, modals, and gradient design
+- **Vanilla JavaScript** – Dynamic rendering, DOM manipulation, filtering, cart logic, and UI feedback
 
 ## 🚀 How to Use
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/huzaifa-frontend/javascript-product-cards.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd javascript-product-cards
    ```
 
-3. Open `index.html` in your browser to view the site locally.
+3. Open `index.html` in your browser to view the project locally.
 
 ## 🛠️ Features
 
-- 🛍️ Dynamic product rendering from an array of objects
-- 📂 Category-based filtering (All, Electronics, Accessories, Sale)
-- 🛒 Add to cart with animated "toast" popup
-- ❌ Delete button to remove products on the fly
-- ✨ Smooth UI animations and responsive behavior
+- 🛍️ Render tech products dynamically from an object array
+- 🧭 Filter by: **All**, **Electronics**, **Accessories**, **Sale**
+- 🛒 Cart system with:
+  - Quantity increase/decrease buttons
+  - Subtotal calculation per item
+  - Full total price update
+  - Empty cart state with animation
+- 📢 Animated "Add to Cart" toast
+- ⭐ Star-based product ratings
+- 🧼 Smooth modal open/close with outside click detection
+- 📱 Fully responsive layout for mobile and desktop
 
 ## 📁 File Structure
 
@@ -54,25 +63,25 @@
 ## ✨ Credits
 
 - Designed & Developed by **Muhammad Huzaifa Karim**
-- Image assets used from [Unsplash](https://unsplash.com/)
+- Product images sourced from [Unsplash](https://unsplash.com/)
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE) – see the LICENSE file for details.
+This project is licensed under the [MIT License](LICENSE) – feel free to use and modify with attribution.
 
 ## ✍️ Author
 
-**Muhammad Huzaifa Karim**  
+**Muhammad Huzaifa Karim**
 [GitHub Profile](https://github.com/huzaifakarim1)
 
 ## 🔄 Deployment
 
-This project is deployed via **GitHub Pages**. Any changes to the `main` branch are automatically reflected at the live site link.
+This project is deployed using **GitHub Pages**. Any commit to the `main` branch automatically reflects on the live site.
 
 ## 📬 Contact
 
-For feedback, suggestions, or collaboration, feel free to connect via GitHub.
+For ideas, feedback, or collaboration, feel free to reach out via [GitHub](https://github.com/huzaifakarim1).
 
 ---
 
-© 2025 Muhammad Huzaifa Karim
+© 2025 Muhammad Huzaifa Karim. All rights reserved.
