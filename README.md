@@ -1,6 +1,6 @@
 # 🛍️ TechStoreX - Product Cards Showcase
 
-🌐 **Live Demo:** [Click here to visit site](https://huzaifa-frontend.github.io/javascript-product-cards/)
+🌐 **Live Demo:** [Click here to visit site](https://huzaifa-frontend.github.io/techstorex-javascript/)
 
 ## 📋 Overview
 
@@ -24,13 +24,13 @@
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/huzaifa-frontend/javascript-product-cards.git
+   git clone https://github.com/huzaifa-frontend/techstorex-javascript.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd javascript-product-cards
+   cd techstorex-javascript
    ```
 
 3. Open `index.html` in your browser to view the project locally.
@@ -52,7 +52,7 @@
 ## 📁 File Structure
 
 ```
-📦 javascript-product-cards
+📦 techstorex-javascript
  ┣ 📄 index.html
  ┣ 📄 style.css
  ┣ 📄 app.js
