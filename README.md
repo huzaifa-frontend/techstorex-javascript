@@ -58,6 +58,7 @@
 
 ```
 📦 techstorex-javascript
+ ┣ 📂 assets
  ┣ 📄 index.html
  ┣ 📄 style.css
  ┣ 📄 app.js
